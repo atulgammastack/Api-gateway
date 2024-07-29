@@ -1,0 +1,21 @@
+server:
+  port: 3533
+  
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: DEPARTMENT-SERVCIE
+        - uri: lb:/DEPARTMENT-SERVCIE
+          predicate:
+            - Path=/department/**
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    server-url:
+      default-zone: 'http://locahost:8761/eureka'
+  instance:
+    host: locahost
